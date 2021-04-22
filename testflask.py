@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for 
+from wow import bitcoin_info
 
-a = str(4.188989) + ": this is the price of Bitcoin"
+a = bitcoin_info()
 
 app = Flask(__name__)
 
