@@ -3,14 +3,14 @@ import json
 import os
 
 
-def handleResponse(response):
+def handleResponse(bitcoin_info):
     #print(response)
 
     deleteFile("lastRun.json")
     renameFile("currentRun.json", "lastRun.json")
-    writeFile("currentRun.json", response)
+    writeFile("currentRun.json", bitcoin_info)
 
-    currentPrice = response['data']['1']['quote']['USD']['price']
+    currentPrice = bitcoin_info['data']['1']['quote']['USD']['price']
     print(currentPrice)
 
     lastResponse = readJsonFromFile('lastRun.json')
@@ -21,7 +21,7 @@ def handleResponse(response):
     print(priceChange)
 
     returnObject = {
-        "priceChange": priceChange
+        "priceChange": priceChange, "currentPrice": currentPrice, "previousPrice": previousPrice
     }
 
     return returnObject
