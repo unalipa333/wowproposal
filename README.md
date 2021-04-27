@@ -54,11 +54,11 @@ Versioning
 version 1.0
 
 Authors
-Maximo Pichardo
-Dorian Brown
-Lyndon Parrilla
-Jesse Roberts
-Brian Kohan
+Maximo Pichardo,
+Dorian Brown,
+Lyndon Parrilla,
+Jesse Roberts,
+Brian Kohan,
 Mike Bogardino
 
 License
