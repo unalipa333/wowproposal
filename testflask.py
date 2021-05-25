@@ -1,7 +1,11 @@
-from flask import Flask, redirect, url_for 
-from wow import bitcoin_info
 
-a = bitcoin_info()
+import json
+import os
+from flask import Flask, redirect, url_for 
+from wow import main 
+#from handleResponse import handleResponse
+
+a = main()
 
 app = Flask(__name__)
 
