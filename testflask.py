@@ -3,16 +3,16 @@ import json
 import os
 from flask import Flask, redirect, url_for 
 from wow import main 
-#from handleResponse import handleResponse
+from handleResponse import handleResponse
 
 a = main()
-
+#b = "hello world"
 app = Flask(__name__)
 
 
 @app.route("/")
 def home():
-    return a 
+    return b
 
 @app.route("/admin")
 def admin():
