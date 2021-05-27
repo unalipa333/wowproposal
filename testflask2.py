@@ -6,8 +6,18 @@ app = Flask(__name__)
 posts = [
     {
         'crypto': 'Bitcoin',
-        'date': '5.23.21',
-        'price': '33.33'    }
+        'date': '5.04.21',
+        'price': '33.33'    },
+
+     {
+        'crypto': 'Dogecoin',
+        'date': '2.99.21',
+        'price': '199.33'    },
+
+     {
+        'crypto': 'Etherium',
+        'date': '11.23.21',
+        'price': '777.33'    }
 ]
 
 @app.route("/")   #decorator and route
