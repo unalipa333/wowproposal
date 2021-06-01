@@ -1,7 +1,12 @@
 #(in your terminal)export FLASK_APP= 'NAME OF FILE.py'
 #
+import base64
 from flask import Flask, render_template, url_for
+from  matplotlib import pyplot as plt
+import mpl_toolkits.axisartist as axisartist
+import io
 app = Flask(__name__)
+
 
 posts = [
     {
@@ -27,6 +32,27 @@ def hello():            #function defined
 
 
 # conditional statement so that script can be run directly with python
+   #run in debug mode
+
+
+
+@app.route("/btcplot", methods='GET') 
+def btcplot():
+    # Generate the figure **without using pyplot**.
+    plt.figure()
+    plt.plot([1, 2])
+    plt.title("test")
+    # Save it to a temporary buffer.
+    buf = BytesIO()
+    plt.savefig(buf, format="png")
+    # Embed the result in the html output.
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return f"<img src='data:image/png;base64,{data}'/>"
+    
+
+
 if __name__ == '__main__':
-    app.run(debug=True)    #run in debug mode
+    app.run(debug=True) 
+
+
 
