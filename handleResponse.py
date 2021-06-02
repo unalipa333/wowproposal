@@ -19,9 +19,9 @@ def handleResponse(response):
         #except ValueError:
             #print("Oops!  That was no valid number.  Try again...")
     #Add unit test
-    #Test Case 1 HandleResponse returns success response object
-    #Test Case 2 HandleResponse returns unsuccess response object when the quote is invalid or empty
-    #Test Case 3 createConnection returns True when called 
+    #DONE Test Case 1 HandleResponse returns success response object
+    #DONE Test Case 2 HandleResponse returns unsuccess response object when the quote is invalid or empty
+    #Test Case 3 createConnection returns a connection when called 
     #Add comment to code
     
     returnObject = None
@@ -46,11 +46,24 @@ def handleResponse(response):
         #renameFile("currentRun.json", "lastRun.json")
         #writeFile("currentRun.json", response)
 
+        cryptoId = ''
+        if '1' in response['data'].keys():
+            cryptoId = '1'
+        elif '1027' in response['data'].keys():
+            cryptoId ='1027'
+        elif '74' in response['data'].keys():
+            cryptoId = '74'
+        else:
+            cryptoId = ''
+        #We are only handling 3 responses
+
+        
+        
         quote = {
-            "currentPrice": response['data']['1']['quote']['USD']['price'],
-            "name": response['data']['1']['name'],
-            "volume_24h": response['data']['1']['quote']['USD']['volume_24h'],
-            "timestamp": response['data']['1']['quote']['USD']['last_updated']
+            "currentPrice": response['data'][cryptoId]['quote']['USD']['price'],
+            "name": response['data'][cryptoId]['name'],
+            "volume_24h": response['data'][cryptoId]['quote']['USD']['volume_24h'],
+            "timestamp": response['data'][cryptoId]['quote']['USD']['last_updated']
         }
         print(quote)
 
