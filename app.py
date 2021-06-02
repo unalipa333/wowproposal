@@ -23,6 +23,9 @@ posts = [
         'price': '777.33'    }
 ]
 
+x = 54000
+y = 55
+
 @app.route("/")   #decorator and route
 @app.route("/home")   #decorator and route
 def hello():            #function defined
@@ -32,16 +35,42 @@ def hello():            #function defined
 @app.route("/btcplot")   #decorator and route
 def btcplot():            #function defined
     fig = Figure()
-    ax = fig.subplots()
-    ax.plot([100, 200])
+    axs = fig.subplots()
+    axs.plot([x, y])
+    #ax.set_title('Bitcoin')
     buf = io.BytesIO()
     fig.savefig(buf, format='png')
-    # data = base64.b64encode(buf.getbuffer()).decode("ascii")
     return send_file(
       io.BytesIO(buf.getvalue()),
-     # download_name='btcplot.png',
       mimetype='image/png'
     )
+
+
+@app.route("/etherplot")   #decorator and route
+def etherplot():            #function defined
+    fig = Figure()
+    ax = fig.subplots()
+    ax.plot([88800, 22222])
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png')
+    return send_file(
+      io.BytesIO(buf.getvalue()),
+      mimetype='image/png'
+    )
+
+
+@app.route("/dogeplot")   #decorator and route
+def dogeplot():            #function defined
+    fig = Figure()
+    ax = fig.subplots()
+    ax.plot([88800, 333])
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png')
+    return send_file(
+      io.BytesIO(buf.getvalue()),
+      mimetype='image/png'
+    )
+
 
 # conditional statement so that script can be run directly with python
 if __name__ == '__main__':
