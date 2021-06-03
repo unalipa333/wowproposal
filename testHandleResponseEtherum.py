@@ -7,10 +7,10 @@ response1 = {
     "status": {
         "timestamp": "2021-05-28T00:15:58.844Z",
         "error_code": 0,
-        "error_message": null,
+        "error_message": None,
         "elapsed": 19,
         "credit_count": 1,
-        "notice": null
+        "notice": None
     },
     "data": {
         "1027": {
@@ -51,11 +51,11 @@ response1 = {
                 "multicoin-capital-portfolio",
                 "paradigm-xzy-screener"
             ],
-            "max_supply": null,
+            "max_supply": None,
             "circulating_supply": 116051687.374,
             "total_supply": 116051687.374,
             "is_active": 1,
-            "platform": null,
+            "platform": None,
             "cmc_rank": 2,
             "is_fiat": 0,
             "last_updated": "2021-05-28T00:15:02.000Z",
