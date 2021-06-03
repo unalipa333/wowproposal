@@ -9,7 +9,7 @@ from flask import Flask, render_template, url_for, send_file
 app = Flask(__name__)
 
 
-def getcurrentprice(currency):
+def getcurrentprice(currency):  #function for current bitcoin price
   con = sl.connect('crypto.db')
   with con:
       ds = con.execute(f"SELECT name, price, volume_24h, timestamp FROM cryptocurrency WHERE name = '{currency}'")     
@@ -17,7 +17,7 @@ def getcurrentprice(currency):
 
 btcprice = getcurrentprice('Bitcoin')
 
-def getcurrentdate(currency):
+def getcurrentdate(currency):  #function for current bitcoin date
   con = sl.connect('crypto.db')
   with con:
       ds = con.execute(f"SELECT name, price, volume_24h, timestamp FROM cryptocurrency WHERE name = '{currency}'")     
@@ -25,7 +25,7 @@ def getcurrentdate(currency):
 
 btcdate = getcurrentdate('Bitcoin')
 
-posts = [
+posts = [                   #dictionary that fills data box 
     {
         'crypto': 'Bitcoin',
         'date': btcdate, 
@@ -52,29 +52,28 @@ def hello():            #function defined
 
 
 @app.route("/btcplot2")   #decorator and route
-def btcplot():  
+def btcplot():            
     
-    return getplot('Bitcoin')
+    return getplot('Bitcoin')     #Bitcoin graph
 
 
 @app.route("/etherplot")   #decorator and route
 def etherplot():            #function defined
    
-   return getplot('Ethereum')
+   return getplot('Ethereum')   #Ethereum graph
 
 @app.route("/dogeplot")   #decorator and route
 def dogeplot():            #function defined
     
-    return getplot('Dogecoin')
+    return getplot('Dogecoin')    #Dogecoin graph
 
 
 
 
-def getplot(currency):
+def getplot(currency):            #function for graphs
     con = sl.connect('crypto.db')
     names = []
     values = []
-    #currency = 'Bitcoin'
     with con:
         ds = con.execute(f"SELECT name, price, volume_24h, timestamp FROM cryptocurrency WHERE name = '{currency}'")
         for row in ds:
@@ -88,7 +87,7 @@ def getplot(currency):
     print(names)
     print(values)
 
-    #ax.set_title('Bitcoin')
+
     buf = io.BytesIO()
     fig.savefig(buf, format='png')
     return send_file(
